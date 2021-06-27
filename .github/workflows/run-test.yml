@@ -10,9 +10,5 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: run test
-        run: xcodebuild \
-              -project test.xcodeproj \
-              -scheme test \
-              -sdk iphonesimulator \
-              -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' \
-              clean test
+        run: xcodebuild -project test.xcodeproj -scheme test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' clean test
+
