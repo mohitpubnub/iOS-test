@@ -1,0 +1,14 @@
+name: iOS_test
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: macos-latest
+    steps:
+      - name: list simulators
+        run: xcrun instruments -s
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: run test
+        run: xcodebuild -project test.xcodeproj -scheme test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.1' clean test
+
