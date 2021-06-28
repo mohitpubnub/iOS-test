@@ -11,9 +11,9 @@ jobs:
         uses: actions/checkout@v2
       - name: run test
         run: xcodebuild -project test.xcodeproj -scheme test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' clean test
-      - name: Upload Test Reports Folder
+      - name: Upload Test result directory
         uses: actions/upload-artifact@v2
         if: ${{ always() }}
         with:
-          name: reports
-          path: test/artifacts/
+          name: Test Results
+          path: /Users/runner/Library/Developer/Xcode/DerivedData/
