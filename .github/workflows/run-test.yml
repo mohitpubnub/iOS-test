@@ -16,4 +16,4 @@ jobs:
         if: ${{ always() }}
         with:
           name: Test Results
-          path: /Users/runner/Library/Developer/Xcode/DerivedData/
+          path: /Users/runner/Library/Developer/Xcode/DerivedData/test-*
