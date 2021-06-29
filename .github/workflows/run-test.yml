@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: run test
-        run: xcodebuild -project test.xcodeproj -scheme test -sdk iphonesimulator -destination 'platform=iOS Simulator,name={{ matrix.device }},OS=14.4' clean test
+        run: xcodebuild -project test.xcodeproj -scheme test -sdk iphonesimulator -destination 'platform=iOS Simulator,name={{matrix.device}},OS=14.4' clean test
 
       - name: Upload Test result directory
         uses: actions/upload-artifact@v2
