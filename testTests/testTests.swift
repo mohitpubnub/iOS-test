@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import PubNub
 @testable import test
 
 class testTests: XCTestCase {
@@ -18,9 +19,17 @@ class testTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testExamplePubNub() throws {
+     var config = PubNubConfiguration(publishKey: "pub_key", subscribeKey: "sub_key")
+     var pubnub = PubNub(configuration: config)
+     pubnub.time { result in
+            switch result {
+            case let .success(timetoken):
+                    XCTAssertNotNil(timetoken)
+            case let .failure(error):
+                print("error: \(error.localizedDescription)")
+            }
+        }
     }
 
     func testPerformanceExample() throws {
