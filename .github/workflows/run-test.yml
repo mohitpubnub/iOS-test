@@ -4,13 +4,21 @@ on: [push]
 jobs:
   test_job:
     runs-on: macos-latest
+
+    strategy:
+      matrix:
+        device: [iPhone 12, iPhone 11]
+
     steps:
       - name: list simulators
         run: xcrun instruments -s
+
       - name: checkout
         uses: actions/checkout@v2
+
       - name: run test
-        run: xcodebuild -project test.xcodeproj -scheme test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' clean test
+        run: xcodebuild -project test.xcodeproj -scheme test -sdk iphonesimulator -destination 'platform=iOS Simulator,name={{ matrix.device }},OS=14.4' clean test
+
       - name: Upload Test result directory
         uses: actions/upload-artifact@v2
         if: ${{ always() }}
